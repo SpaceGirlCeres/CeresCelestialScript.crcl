@@ -1,0 +1,20 @@
+~ comments
+
+let dynamic var name -> value
+let static const name -> value
+
+instantiate func_name(inputs, go, here){
+	~ code goes here
+}
+
+create class_name {
+	~ code goes here
+}
+
+~ loops
+loop while(arg) {
+	~ code goes here
+}
+loop for(start, end, arg) {
+	~ code goes here
+}
