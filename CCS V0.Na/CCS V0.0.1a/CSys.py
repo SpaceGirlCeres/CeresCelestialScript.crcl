@@ -67,6 +67,8 @@ class System:
                 if char != "~":
                     out += char
                 else:
+                    if v_index > len(vars)-1:
+                        return Error.str_err(self, "fstr_index", len(vars), v_index+1)
                     out += str(vars[v_index])
                     v_index+=1
             print(out)

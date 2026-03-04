@@ -19,3 +19,9 @@ class Error:
         if err_type == "var_name!":
             print(f"Variable Name '{expct}' Not Found")
             quit(1)
+
+    def str_err(self, err_type, expct="", rec=""):
+        print(f'String error {err_type}\n')
+        if err_type == "fstr_index":
+            print(f"FString index out of range, Expected at most {expct} inputs, got {rec} inputs")
+            quit(2)
