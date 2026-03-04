@@ -45,19 +45,31 @@ class System:
         def __init__(self):
             pass
 
-        # unformated printing, can take in 1 vaiable
-        def prntln(self, text="", cvar=""):
-            if cvar == "":
+
+        def prntln(self, text="",):
+            if text[0] != "{" and text[len(text)-1] != "}":
                 print(text)
             else:
-                if cvar in Var.vars:
-                    print(f"{text}{Var.vars[cvar][1]}")
+                out = ""
+                for char in text:
+                    if char not in "{}":
+                        out += char
+                if out in Var.vars:
+                    print(Var.vars[f"{out}"][1])
                 else:
-                    Error.var_err(Var, "var_name!", cvar)
+                    print(text)
 
-        # Formated Printing UNFINISHED
-        def prntf(self):
-            pass
+        # Formated Printing Mostly Finished
+        def prntf(self, text="", vars:list=[]):
+            out = f""
+            v_index=0
+            for char in text:
+                if char != "~":
+                    out += char
+                else:
+                    out += str(vars[v_index])
+                    v_index+=1
+            print(out)
 
     class Cin:
         def __init__(self):
