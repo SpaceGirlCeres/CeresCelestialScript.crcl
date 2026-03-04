@@ -55,11 +55,11 @@ class System:
                     if char not in "{}":
                         out += char
                 if out in Var.vars:
-                    print(Var.vars[f"{out}"][1])
+                    print(Var.get(out))
                 else:
                     print(text)
 
-        # Formated Printing Mostly Finished
+        # Formatted Printing Mostly Finished
         def prntf(self, text="", vars:list=[]):
             out = f""
             v_index=0

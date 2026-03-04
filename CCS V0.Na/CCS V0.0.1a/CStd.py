@@ -22,3 +22,10 @@ class Var:
             return Error.var_err(self, "dupe_name", f"{name}")
 
         Var.vars[f'{name}'] = (typed, value)
+
+    #helper function used to get a variables value
+    def get(var_name):
+        if var_name not in Var.vars:
+            return Error.var_err(Var, "var_name!", f"{var_name}")
+        else:
+            return Var.vars[var_name][1]
