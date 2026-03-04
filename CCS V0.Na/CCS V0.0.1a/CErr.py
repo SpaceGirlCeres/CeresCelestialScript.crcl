@@ -25,3 +25,18 @@ class Error:
         if err_type == "fstr_index":
             print(f"FString index out of range, Expected at most {expct} inputs, got {rec} inputs")
             quit(2)
+
+    def file_err(self, err_type, expct="", rec=""):
+        print(f'File error {err_type}\n')
+        if err_type == "!crcl":
+            print(f"Incorrect file type, Expected {expct}, got {rec}")
+            quit(3)
+        if err_type == "file!found":
+            print(f"File `{expct}` Not Found")
+            quit(3)
+
+    def import_err(self, err_type, expct="", rec=""):
+        print(f'Import error {err_type}\n')
+        if err_type == "lib!found":
+            print(f"Library `{expct}` not found")
+            quit(4)
