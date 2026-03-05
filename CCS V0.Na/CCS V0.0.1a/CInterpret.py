@@ -2,10 +2,11 @@ import importlib
 from CErr import *
 
 class Interpreter:
-    def __init__(self, text="", included={}):
+    def __init__(self, text="", included={}, tokens={}):
         self.filename=input("Type the file name you wish to run:\n")
         self.text = text
         self.included = included
+        self.tokens = tokens
 
         self.load_file()
 
@@ -24,6 +25,8 @@ class Interpreter:
         except FileNotFoundError:
             return Error.file_err(self, "file!found", self.filename)
 
+        self.tokenizer()
+
     def include(self, libs=[]):
         for module_name in libs:
             try:
@@ -31,6 +34,15 @@ class Interpreter:
                 self.included[module_name] = module
             except ImportError:
                 return Error.import_err(self, "lib!found", module_name)
+
+
+    def tokenizer(self):
+        # seperate self.text into lines
+        lines = self.text.split("\n")
+
+        # seperates tokens by spaces
+        for line in range(len(lines)):
+            self.tokens[line + 1] = lines[line].split(" ")
 
 
 Interpreter()
