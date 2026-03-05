@@ -27,6 +27,7 @@ class Interpreter:
 
         self.tokenizer()
 
+    # currently only works with python libraries
     def include(self, libs=[]):
         for module_name in libs:
             try:
@@ -44,6 +45,7 @@ class Interpreter:
         for line in range(len(lines)):
             self.tokens[line + 1] = lines[line].split(" ")
 
+        print(self.tokens)
         self.parser()
 
 
@@ -56,9 +58,7 @@ class Interpreter:
                 except IndexError:
                     return Error.parse_err(self, "null_import")
 
-
         self.include(libs)
-
-
+        print(self.included)
 
 Interpreter()

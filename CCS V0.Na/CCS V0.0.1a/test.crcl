@@ -2,4 +2,4 @@ $include CSys
 $include CStd
 
 let test_var(int) = 37
-CSys::System:COut::printf("test_var = ~", [test_var])
+CSys>System::COut::printf("test_var = ~", [test_var])
