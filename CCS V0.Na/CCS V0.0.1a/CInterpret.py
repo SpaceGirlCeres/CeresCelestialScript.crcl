@@ -7,11 +7,15 @@ class Interpreter:
         self.text = text
         self.included = included
 
+        self.load_file()
+
     def load_file(self):
         if self.filename[-5:] != ".crcl":
             rec=self.filename
-            while rec[0] != ".":
+            while rec != "" and rec[0] != ".":
                 rec = rec[1:]
+            if rec == "":
+                rec = "NULLTYPE"
             return Error.file_err(self, "!crcl", ".crcl", rec)
 
         try:
@@ -25,9 +29,8 @@ class Interpreter:
             try:
                 module = importlib.import_module(module_name)
                 self.included[module_name] = module
-            except ImportError as e:
+            except ImportError:
                 return Error.import_err(self, "lib!found", module_name)
 
 
-Interpreter.__init__(Interpreter)
-Interpreter.load_file(Interpreter)
+Interpreter()
