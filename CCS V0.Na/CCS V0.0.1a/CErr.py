@@ -40,3 +40,9 @@ class Error:
         if err_type == "lib!found":
             print(f"Library `{expct}` not found")
             quit(4)
+
+    def parse_err(self, err_type, expct="", rec=""):
+        print(f"Parser error {err_type}\n")
+        if err_type == "null_import":
+            print(f"no import given")
+            quit(5)

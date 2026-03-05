@@ -44,5 +44,21 @@ class Interpreter:
         for line in range(len(lines)):
             self.tokens[line + 1] = lines[line].split(" ")
 
+        self.parser()
+
+
+    def parser(self):
+        libs = []
+        for token in self.tokens:
+            if self.tokens[token][0] == "$include":
+                try:
+                    libs.append(self.tokens[token][1])
+                except IndexError:
+                    return Error.parse_err(self, "null_import")
+
+
+        self.include(libs)
+
+
 
 Interpreter()
